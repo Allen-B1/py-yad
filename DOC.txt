@@ -1,7 +1,19 @@
-Help on module yad.dialog in yad:
+Help on module yad:
 
 NAME
-    yad.dialog - Yet Another Dialog in python
+    yad
+
+FILE
+    /home/allen/Documents/Projects/Python/yad/__init__.py
+
+
+Help on module dialog:
+
+NAME
+    dialog - Yet Another Dialog in python
+
+FILE
+    /home/allen/Documents/Projects/Python/yad/dialog.py
 
 DESCRIPTION
     Create simple dialogs
@@ -9,10 +21,37 @@ DESCRIPTION
     HOMEPAGE
             https://github.com/allen-b1/py-yad
 
+FUNCTIONS
+    dialog(text, title, buttons)
+        Show basic dialog with custom buttons, where buttons is an array. For **kwargs, see the KWARGS section
+        
+        The first button is the default button, and the second one is returned if the user closes the window without clicking a button
+        
+        EXAMPLE
+                yad.dialog("<b>Lorum ispem</b> dolor...", "Get it?", ["Got it!", "Don't understand"], width=500, height=300)
+        
+        RETURNS
+                The index of which button was clicked
+    
+    entry(text, title, buttons=['OK', 'Cancel'])
+        Show dialog with an entry (textbox). text, title, and buttons are the same as yad.dialog
+        
+        RETURNS
+                What the user entered, or None if the user clicked the second button (i.e. Cancel)
+    
+    file(text, title='Open File', buttons=['OK', 'Cancel'], default_file='/home/')
+        Show a filepicker dialog. text, title, and buttons are the same as yad.dialog
+        
+        RETURNS
+                The path to the file, or None if the user clicked the second button (i.e. Cancel)
+    
+    info(text, title='Info', **kwargs)
+        Show basic dialog with 'Close' button
+
+DATA
+    __author__ = 'Allen-B1'
+
 AUTHOR
     Allen-B1
-
-FILE
-    /home/allen/Documents/Projects/Python/yad/dialog.py
 
 
