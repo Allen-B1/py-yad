@@ -28,10 +28,10 @@ def dialog(text, title, buttons, **kwargs):
 
 	The first button is the default button, and the second one is returned if the user closes the window without clicking a button
 
-	Example:
+	EXAMPLE
 		yad.dialog("<b>Lorum ispem</b> dolor...", "Get it?", ["Got it!", "Don't understand"], width=500, height=300)
 
-	Returns:
+	RETURNS
 		The index of which button was clicked
 	"""
 	arr = ["yad", "--center", "--text=" + str(text), "--title=" + str(title)]
@@ -49,9 +49,27 @@ def info(text, title="Info", **kwargs):
 def entry(text, title, buttons=["OK", "Cancel"]):
 	"""Show dialog with an entry (textbox). text, title, and buttons are the same as yad.dialog
 
-	Returns what the user entered, or None if the user clicked the second button
+	RETURNS
+		What the user entered, or None if the user clicked the second button (i.e. Cancel)
 	"""
 	arr = ["yad", "--center", "--entry", "--text=" + str(text), "--title=" + str(title)]
+	if type(buttons) is list:
+		buttons = enumerate(buttons)
+	for bid, blabel in buttons:
+		arr.append("--button=" + str(blabel) + ":" + str(bid))
+	ret = subprocess.run(arr)
+	if ret.returncode != 1:
+		return ret.stdout
+	else:
+		return None
+
+def file(text, title="Open File", buttons=["OK", "Cancel"]):
+	"""Show a filepicker dialog. text, title, and buttons are the same as yad.dialog
+
+	RETURNS
+		The path to the file, or None if the user clicked the second button (i.e. Cancel)
+	"""
+	arr = ["yad", "--center", "--file", "--text=" + str(text), "--title=" + str(title)]
 	if type(buttons) is list:
 		buttons = enumerate(buttons)
 	for bid, blabel in buttons:
