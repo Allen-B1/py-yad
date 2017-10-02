@@ -63,13 +63,13 @@ def entry(text, title, buttons=["OK", "Cancel"]):
 	else:
 		return None
 
-def file(text, title="Open File", buttons=["OK", "Cancel"]):
+def file(text, title="Open File", buttons=["OK", "Cancel"], default_file="/home/"):
 	"""Show a filepicker dialog. text, title, and buttons are the same as yad.dialog
 
 	RETURNS
 		The path to the file, or None if the user clicked the second button (i.e. Cancel)
 	"""
-	arr = ["yad", "--center", "--file", "--text=" + str(text), "--title=" + str(title)]
+	arr = ["yad", "--center", "--file", "--text=" + str(text), "--title=" + str(title), "--filename=" + default_file]
 	if type(buttons) is list:
 		buttons = enumerate(buttons)
 	for bid, blabel in buttons:
