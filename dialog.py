@@ -1,29 +1,17 @@
 """Yet Another Dialog in python
 
-Create advanced dialogs
+Create simple dialogs
 
 HOMEPAGE
-	https://github.com/allen-b1/
-
-KWARGS
-	Keyword arguments:
-	 - width: width of window
-	 - height: height of window
+	https://github.com/allen-b1/py-yad
 """
 
-__name__ = "yad"
+__name__ = "yad.dialog"
 __author__ = "Allen-B1"
 
 import subprocess
 
-# Parse KWARGS
-def _parse_kwargs(kwargs, data):
-	if "width" in kwargs:
-		data.append("--width=" + str(kwargs["width"]))
-	if "height" in kwargs:
-		data.append("--height=" + str(kwargs["height"]))
-
-def dialog(text, title, buttons, **kwargs):
+def dialog(text, title, buttons):
 	"""Show basic dialog with custom buttons, where buttons is an array. For **kwargs, see the KWARGS section
 
 	The first button is the default button, and the second one is returned if the user closes the window without clicking a button
@@ -35,7 +23,6 @@ def dialog(text, title, buttons, **kwargs):
 		The index of which button was clicked
 	"""
 	arr = ["yad", "--center", "--text=" + str(text), "--title=" + str(title)]
-	_parse_kwargs(kwargs, arr)
 	if type(buttons) is list:
 		buttons = enumerate(buttons)
 	for bid, blabel in buttons:
