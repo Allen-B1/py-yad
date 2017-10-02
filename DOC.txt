@@ -1,0 +1,46 @@
+Help on module yad:
+
+NAME
+    yad - Yet Another Dialog in python
+
+FILE
+    /home/allen/Documents/Projects/Python/py-yad/yad.py
+
+DESCRIPTION
+    Create advanced dialogs
+    
+    HOMEPAGE
+            https://github.com/allen-b1/
+    
+    KWARGS
+            Keyword arguments:
+             - width: width of window
+             - height: height of window
+
+FUNCTIONS
+    dialog(text, title, buttons, **kwargs)
+        Show basic dialog with custom buttons, where buttons is an array. For **kwargs, see the KWARGS section
+        
+        The first button is the default button, and the second one is returned if the user closes the window without clicking a button
+        
+        Example:
+                yad.dialog("<b>Lorum ispem</b> dolor...", "Get it?", ["Got it!", "Don't understand"], width=500, height=300)
+        
+        Returns:
+                The index of which button was clicked
+    
+    entry(text, title, buttons=['OK', 'Cancel'])
+        Show dialog with an entry (textbox). text, title, and buttons are the same as yad.dialog
+        
+        Returns what the user entered, or None if the user clicked the second button
+    
+    info(text, title='Info', **kwargs)
+        Show basic dialog with 'Close' button
+
+DATA
+    __author__ = 'Allen-B1'
+
+AUTHOR
+    Allen-B1
+
+

@@ -1,4 +1,5 @@
-""" Yet Another Dialog in python
+"""Yet Another Dialog in python
+
 Create advanced dialogs
 
 HOMEPAGE
