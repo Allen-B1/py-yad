@@ -56,5 +56,8 @@ def entry(text, title, buttons=["OK", "Cancel"]):
 		buttons = enumerate(buttons)
 	for bid, blabel in buttons:
 		arr.append("--button=" + str(blabel) + ":" + str(bid))
-	return subprocess.run(arr).returncode
-
+	ret = subprocess.run(arr)
+	if ret.returncode != 1:
+		return ret.stdout
+	else:
+		return None
