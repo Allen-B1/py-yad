@@ -6,7 +6,6 @@ HOMEPAGE
 	https://github.com/allen-b1/py-yad
 """
 
-__name__ = "yad.dialog"
 __author__ = "Allen-B1"
 
 import subprocess
